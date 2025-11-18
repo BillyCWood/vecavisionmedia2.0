@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"log"
 	"net/http"
@@ -10,6 +9,15 @@ import (
 	"github.com/joho/godotenv"
 )
 
+type email struct {
+	Name 	string	`json:"name"`
+	Email	string	`json:"email"`
+	Phone 	string	`json:"phone"`
+	Org		string	`json:"org"`
+	Role	string	`json:"role"`
+	Message	string	`json:"message"`
+
+}
 func main() {
 
 	router := gin.Default()
@@ -25,27 +33,39 @@ func main() {
 		apiKey := os.Getenv("RESEND_API")
 		vvmEmail := os.Getenv("VVM_EMAIL")
 		client := resend.NewClient(apiKey)
+		var formData email
 
-
-		params := &resend.SendEmailRequest {
-			From:		"Veca Vision Media <noreply@vecavisionmedia.com>",
-			To:			[]string{vvmEmail},
-			Html:		"<tag></tag>",
-			Subject:	"New Contact Request from ",
-			Cc:			[]string{"asdfadsf@asdfadf.com"},
-			Bcc:		[]string{"asdfadsf@asdfadf.com"},
-			ReplyTo:	"asdfasdf@asdfadf.com",
+		if err := c.ShouldBindJSON(&formData); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Requeset"})
 		}
 
-		sent, err := client.Emails.Send(params)
-		if err != nil {
-			fmt.Println(err.Error())
-			return
-		}
+		if (formData.Role != "") {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		} else {
 
-		c.JSON(http.StatusOK, gin.H{
-			"message": sent.Id,
-		})
+			var batchEmails = []*resend.SendEmailRequest {
+				{
+					From:		"VecaVisionMedia <noreply@vecavisionmedia.com>",
+					To:			[]string{vvmEmail},
+					Subject:	"New Contact Request from " + formData.Name,
+					Html:		"<h1>Hello</h1>",
+				},
+				{
+					From:		"VecaVisionMedia <noreply@vecavisionmedia.com>",
+					To:			[]string{formData.Email},
+					Subject:	"Veca Vision Media Contact Confirmation",
+					Html:		"<h1>Hello</h1>",
+				},
+
+			}
+
+
+			sent, err := client.Batch.SendWithContext(c, batchEmails)
+			if err != nil {panic(err)}
+			c.JSON(http.StatusOK, gin.H{"message": sent.Data, })
+		}
 	})
+
+	http.ListenAndServe(":8080", router)
 }
 
