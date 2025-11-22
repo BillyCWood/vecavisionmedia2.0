@@ -7,6 +7,8 @@
     --color-vvm-teal: #03fcca;
     --color-vvm-blue: #0384ca;
     --color-vvm-lightblue: #38bdf8;
+    --animate-infinite-scroll-left: infinite-scroll-left 18s linear infinite;
+    --animate-infinite-scroll-right: infinite-scroll-right 21s linear infinite;
 }
 
 html,
@@ -50,7 +52,7 @@ p {
 }
 
 .hero-service-card-icon-container {
-    @apply max-md:hidden w-fit p-2 bg-vvm-pink rounded-full -translate-y-[24px];
+    @apply max-md:hidden w-fit p-2 bg-vvm-pink rounded-full -translate-y-6;
 }
 
 .service-item {
@@ -64,4 +66,49 @@ p {
     opacity: 1;
     filter: blur(0px);
     transform: translateX(0);
+}
+.show:nth-child(2) { transition-delay: 200ms; }
+.show:nth-child(3) { transition-delay: 400ms; }
+.show:nth-child(4) { transition-delay: 600ms; }
+
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+@keyframes infinite-scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+@keyframes infinite-scroll-right {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+  
+.slide-container:before,
+.slide-container:after {
+    @apply absolute top-0 h-full z-[2] content-[''] w-28 md:w-56;
+}
+  
+.logos { @apply overflow-hidden py-16 relative; }
+.logos:before { @apply left-0 bg-gradient-to-l from-white/0 to-custom-gray to-80%; }
+.logos:after { @apply right-0 bg-gradient-to-r from-white/0 to-custom-gray to-80%; }
+
+
+.carousel-logo { @apply min-w-32 object-contain; }
+.carousel-logo2 { @apply min-w-48 object-contain; }
+.carousel-logo-svg { @apply min-w-28; }
+
+.image-container li {
+    @apply mx-36;
+}
+
+#top-slide-1,
+#top-slide-2 {
+  @apply animate-infinite-scroll-left;
+}
+
+#bottom-slide-1,
+#bottom-slide-2 {
+  @apply animate-infinite-scroll-right;
 }

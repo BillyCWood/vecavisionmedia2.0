@@ -1,9 +1,14 @@
-'use client';
-import CountUp from 'react-countup';
-import { useEffect } from "react";
+"use client";
+import CountUp from "react-countup";
+import { useState, useEffect } from "react";
 
 
 export default function About() {
+
+    const [isClient, setIsClient] = useState(false);
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     // Intersection Observer    
     useEffect(() => {
@@ -33,13 +38,13 @@ export default function About() {
                     <div>
                         <p>Projects Completed</p>
                         <p className='w-fit font-bold text-vvm-blue'>
-                            <CountUp start={0} end={60} enableScrollSpy  scrollSpyOnce duration={3} useEasing={false} />+
+                            { isClient && <CountUp start={0} end={60} enableScrollSpy scrollSpyOnce duration={3} useEasing={false}  /> }+
                         </p>
                     </div>
                     <div>
                         <p>Businesses Helped</p>
                         <p className='w-fit font-bold text-vvm-blue'>
-                            <CountUp start={0} end={20} enableScrollSpy scrollSpyOnce duration={3} useEasing={false} />+
+                            { isClient && <CountUp start={0} end={20} enableScrollSpy scrollSpyOnce duration={3} useEasing={false}  /> }+
                         </p>
                     </div>
                 </div>
@@ -47,7 +52,7 @@ export default function About() {
 
             {/* Desktop */} 
             <div className='max-lg:hidden flex mx-auto gap-x-10'>
-                <div className='w-[300px] h-[300px] border border-white/50 z-[2] service-item'>
+                <div className='w-[300px] h-[300px] border border-white/50 z-2 service-item'>
                     <img src="/images/VVM-Jaiden_head.jpg" alt="Jaiden Veca" width="400" height="400" />
                 </div>
 
@@ -58,13 +63,13 @@ export default function About() {
                         <div>
                             <p>Projects Completed</p>
                             <p className='w-fit font-bold text-vvm-blue'>
-                                <CountUp start={0} end={60} enableScrollSpy scrollSpyOnce duration={3} useEasing={false} />+
+                                { isClient && <CountUp start={0} end={60} enableScrollSpy scrollSpyOnce duration={3} useEasing={false}  /> }+
                             </p>
                         </div>
                         <div>
                             <p>Businesses Helped</p>
                             <p className='w-fit font-bold text-vvm-blue'>
-                                <CountUp start={0} end={20} enableScrollSpy scrollSpyOnce duration={3} useEasing={false} />+
+                                { isClient && <CountUp start={0} end={20} enableScrollSpy scrollSpyOnce duration={3} useEasing={false}  /> }+
                             </p>
                         </div>
                     </div>
