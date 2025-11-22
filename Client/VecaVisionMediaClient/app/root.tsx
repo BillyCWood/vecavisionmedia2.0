@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 
+import Banner from "./ui/Banner";
 import Navbar from "./ui/Navbar"
 import Footer from "./ui/Footer"
 
@@ -37,10 +38,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="jost">
         <header>
+            <Banner />
             <Navbar />
         </header>
-        {children}
-        <footer>
+        <div className="mb-auto overflow-hidden">
+            {children}
+        </div>
+        <footer className="relative border-t border-white/50 pt-3 pb-2 bg-black">
             <Footer />
             <div className="mt-3 font-extralight text-xs flex justify-evenly">Copyright &copy; 2024 Veca Vision Media - All Rights Reserved.</div>
         </footer>
