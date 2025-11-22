@@ -14,7 +14,7 @@ export default function Navbar() {
             <div className="hidden lg:flex bg-black/50 backdrop-blur-md border-b border-white/50 justify-evenly items-center lg:px-24 xl:px-72">
 
                 <Link to={'/'} className="group flex items-center">
-                    <img src="../../public/VVM-images/Veca-Vision2.png" className="m-0 p-0 group-hover:grayscale group-hover:ease-in-out group-hover:duration-300" width={75} height={75} alt="Veca Vision Media Logo" />
+                    <img src="/VVM-images/Veca-Vision2.png" className="m-0 p-0 group-hover:grayscale group-hover:ease-in-out group-hover:duration-300" width={75} height={75} alt="Veca Vision Media Logo" />
                     <span className="group-hover:text-vvm-lightblue group-hover:ease-in-out group-hover:duration-300">Veca Vision Media</span>
                 </Link>
 
@@ -28,7 +28,7 @@ export default function Navbar() {
             { /*  Mobile Navigation */ }
             <div className="flex lg:hidden sticky top-0 bg-black border-b border-white px-6 justify-between">
                 <Link to={'/'} className="flex items-center ease-in-out duration-300">
-                    <img src="../../public/VVM-images/Veca-Vision2.png" className="m-0 p-0" width={75} height={75} alt="Veca Vision Media Logo" />
+                    <img src="/VVM-images/Veca-Vision2.png" className="m-0 p-0" width={75} height={75} alt="Veca Vision Media Logo" />
                 </Link>
                 <button className={`hover:cursor-pointer ${ isOpen ? 'space-y-0 content-center' : 'space-y-2 content-center' }`} onClick={ () => setIsOpen(!isOpen) }>
                     <span className={`block w-6 border-b ${ isOpen ? 'rotate-225 duration-500' : 'rotate-0 duration-500' }`} />
