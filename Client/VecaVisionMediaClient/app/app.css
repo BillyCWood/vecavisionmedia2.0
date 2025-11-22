@@ -14,6 +14,16 @@ body {
   @apply bg-[#090909] text-white;
 }
 
+h1 {
+    @apply text-xl font-bold md:text-2xl lg:text-3xl;
+}
+h2 {
+    @apply text-xl lg:text-2xl;
+}
+p {
+    @apply text-base font-extralight md:text-xl;
+}
+
 .jost {
   font-family: "Jost", sans-serif;
   font-style: normal;
@@ -25,4 +35,33 @@ body {
 
 .mobile-link {
     @apply text-right py-4 pr-6 my-3 border-b;
+}
+
+.hero {
+    background: url("/public/images/ben-collins-SpDOwp6PnBs-unsplash.jpg");
+    background-position: 20% 0%;
+    background-size: cover;
+    background-color: rgba(9, 9, 9, 0.7);
+    background-blend-mode: darken;
+}
+
+.hero-service-card {
+    @apply max-w-80 md:max-w-96 max-md:border-b-2 border-white pb-10 mx-auto flex flex-col items-center md:bg-custom-gray md:rounded-xl md:px-3;
+}
+
+.hero-service-card-icon-container {
+    @apply max-md:hidden w-fit p-2 bg-vvm-pink rounded-full -translate-y-[24px];
+}
+
+.service-item {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateX(0);
 }
