@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 import Navbar from "./ui/Navbar"
+import Footer from "./ui/Footer"
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,11 +35,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="jost">
         <header>
             <Navbar />
         </header>
         {children}
+        <footer>
+            <Footer />
+            <div className="mt-3 font-extralight text-xs flex justify-evenly">Copyright &copy; 2024 Veca Vision Media - All Rights Reserved.</div>
+        </footer>
         <ScrollRestoration />
         <Scripts />
       </body>

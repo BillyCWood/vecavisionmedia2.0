@@ -1,9 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    
     --color-custom-gray: #1a1a1a;
     --color-vvm-pink: #ac00e6;
     --color-vvm-teal: #03fcca;
@@ -16,8 +14,13 @@ body {
   @apply bg-[#090909] text-white;
 }
 
+.jost {
+  font-family: "Jost", sans-serif;
+  font-style: normal;
+}
+
 .link {
-    @apply relative w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left;
+    @apply relative w-fit block after:block after:content-[''] after:absolute after:h-0.5 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left;
 }
 
 .mobile-link {
