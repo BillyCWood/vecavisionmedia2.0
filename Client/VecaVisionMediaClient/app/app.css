@@ -112,3 +112,8 @@ p {
 #bottom-slide-2 {
   @apply animate-infinite-scroll-right;
 }
+
+.about-section-container { @apply pt-10 pb-10 border-b; }
+.about-section-heading { @apply font-bold text-2xl; }
+.about-section-tagline { @apply italic mt-2 mb-10 opacity-70; }
+.about-p { @apply px-6 sm:px-16 max-w-[1260px] mx-auto mb-6 text-left; }
