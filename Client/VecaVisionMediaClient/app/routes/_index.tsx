@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-import type { Route } from "./+types/home";
 import { Link } from "react-router";
 
 import Button from "~/ui/Button";
@@ -10,12 +9,6 @@ import LogoCarousel from "~/ui/home/LogoCarousel";
 
 import { Zap, TrendingUp, Brain, RefreshCcw } from "lucide-react";
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "Veca Vision Media" },
-    { name: "description", content: "Videography business in Bozeman, MT." },
-  ];
-}
 
 export default function Home() {
 
