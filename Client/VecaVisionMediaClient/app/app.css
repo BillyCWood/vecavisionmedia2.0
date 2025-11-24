@@ -117,3 +117,12 @@ p {
 .about-section-heading { @apply font-bold text-2xl; }
 .about-section-tagline { @apply italic mt-2 mb-10 opacity-70; }
 .about-p { @apply px-6 sm:px-16 max-w-[1260px] mx-auto mb-6 text-left; }
+
+
+.services-hero {
+    background: url("/images/harry-cunningham-7L2h4zTYiNI-unsplash.jpg");
+    background-position: 20% 0%;
+    background-size: cover;
+    background-color: rgba(9, 9, 9, 0.7);
+    background-blend-mode: darken;
+}
