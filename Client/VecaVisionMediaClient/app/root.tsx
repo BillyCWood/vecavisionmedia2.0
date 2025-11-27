@@ -37,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="jost">
-        <header>
+        <header className="sticky top-0 z-30">
             <Banner />
             <Navbar />
         </header>
