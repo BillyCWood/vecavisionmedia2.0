@@ -11,20 +11,10 @@
     --animate-infinite-scroll-right: infinite-scroll-right 21s linear infinite;
 }
 
-html,
-body {
-  @apply bg-[#090909] text-white;
-}
-
-h1 {
-    @apply text-xl font-bold md:text-2xl lg:text-3xl;
-}
-h2 {
-    @apply text-xl lg:text-2xl;
-}
-p {
-    @apply text-base font-extralight md:text-xl;
-}
+html, body { @apply bg-[#090909] text-white; }
+h1 { @apply text-xl font-bold md:text-2xl lg:text-3xl; }
+h2 { @apply text-xl lg:text-2xl; }
+p { @apply text-base font-extralight md:text-xl; }
 
 .jost {
   font-family: "Jost", sans-serif;
@@ -35,9 +25,7 @@ p {
     @apply relative w-fit block after:block after:content-[''] after:absolute after:h-0.5 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left;
 }
 
-.mobile-link {
-    @apply text-right py-4 pr-6 my-3 border-b;
-}
+.mobile-link { @apply text-right py-4 pr-6 my-3 border-b; }
 
 .hero {
     background: url("/images/ben-collins-SpDOwp6PnBs-unsplash.jpg");
@@ -99,19 +87,11 @@ p {
 .carousel-logo2 { @apply min-w-48 object-contain; }
 .carousel-logo-svg { @apply min-w-28; }
 
-.image-container li {
-    @apply mx-36;
-}
+.image-container li { @apply mx-36; }
 
-#top-slide-1,
-#top-slide-2 {
-  @apply animate-infinite-scroll-left;
-}
+#top-slide-1, #top-slide-2 { @apply animate-infinite-scroll-left; }
 
-#bottom-slide-1,
-#bottom-slide-2 {
-  @apply animate-infinite-scroll-right;
-}
+#bottom-slide-1, #bottom-slide-2 { @apply animate-infinite-scroll-right; }
 
 .about-section-container { @apply pt-10 pb-10 border-b; }
 .about-section-heading { @apply font-bold text-2xl; }
@@ -125,4 +105,18 @@ p {
     background-size: cover;
     background-color: rgba(9, 9, 9, 0.7);
     background-blend-mode: darken;
+}
+
+.services-nav { @apply flex items-center mt-5 mx-auto px-5 py-2 w-72 justify-between rounded-sm; }
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  background: 
+    linear-gradient(90deg,#0001 33%,#0005 50%,#0001 66%)
+    #2a2a2a;
+  background-size:300% 100%;
+  animation: l1 1s infinite linear;
+}
+@keyframes l1 {
+  0% {background-position: right}
 }
