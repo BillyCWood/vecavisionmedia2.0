@@ -1,6 +1,7 @@
 import Button from "~/ui/Button";
-import { services } from "~/../utils/constants";
+import axiosClient from "../api/axiosConfig";
 
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
 import { 
@@ -9,9 +10,30 @@ import {
     Clapperboard,
     Video,
 } from "lucide-react";
+import LoadServiceIndex from "~/ui/loading/services/LoadServiceIndex";
 
 
 export default function Home() {
+    const [services, setServices] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchServices = async () => {
+            setIsLoading(true);
+            try{
+                const res = await axiosClient.get('/services');
+                setServices(res.data);
+                console.log(res);
+            } catch(error) {
+                console.error("Error fetching services: ", error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+
+        fetchServices();
+    }, [])
+
     return(
         <main className='pb-10 relative'>
             <div className='services-hero w-screen overflow-hidden relative max-lg:pl-10 py-32'>
@@ -24,8 +46,8 @@ export default function Home() {
             <div className='max-md:max-w-96 md:w-10/12 xl:w-3/4 2xl:w-1/2 mx-auto md:max-lg:ml-10 mt-14 max-md:px-6'>
                 <h1 className='text-vvm-lightblue mb-4'>Our Services</h1>
                 <div className='lg:grid lg:grid-cols-2 lg:gap-10'>
-
-                    {
+                    
+                    { isLoading ? <LoadServiceIndex count={5} /> :
                         services.map((service: any, index: any) => (
                             <div className={`${index==4 ? 'col-span-2 text-center' : ''}`} key={index}>
                                 <Link  
